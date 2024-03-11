@@ -15,10 +15,10 @@ def vid2wav(file,output="wav"):
             tf = str(datetime.timedelta(minutes=i,seconds=59))
             command = f"ffmpeg -y -hide_banner -loglevel error -y -ss {ti} -to {tf} -i '{audio_name}.{output}' -ab 160k -ac 2 -ar 44100 -vn 'audio/{audio_name}-{str(i).zfill(len(str(t)))}.{output}'"
             subprocess.call(command, shell=True) 
-            try:
-                subprocess.call(f"rm '{audio_name}.{output}'", shell=True)
-            except:
-                pass
+        try:
+            subprocess.call(f"rm '{audio_name}.{output}'", shell=True)
+        except:
+            pass
     except: 
         print("Incorrect file path or format.")
 
